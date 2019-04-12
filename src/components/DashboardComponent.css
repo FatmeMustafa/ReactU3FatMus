@@ -1,0 +1,13 @@
+input {
+  margin-bottom: 15px;
+}
+button {
+  margin-right: 5px;
+  margin-bottom: 3px;
+  width: 100%;
+}
+.btn-primary {
+  display: block;
+  margin: 0 auto;
+  margin-top: 11px;
+}

@@ -31,8 +31,12 @@ class UserScreen extends Component {
     console.log(this.state)
   }
 
-  render(){
+  render() {
+    const {match} = this.props;
+    const id = match.params.userName;
+
     return(
+      <div> {id ? 
       <div style={{ margin: "0 auto", textAlign: "center", backgroundColor: "white", padding: "15px", width: "30%" }}>
         <img style={{ height: "15em", width: "15em"}} src="https://static.nanopress.it/nanopress/fotogallery/1200X0/240691/contorno-di-batman.jpg" alt="batmanuser"/>
         <h3>{this.state.user.username}</h3>
@@ -47,6 +51,7 @@ class UserScreen extends Component {
             </div> :null
         }
         <button className="btn btn-info" onClick={this.toggleAddress}>{this.state.address ? "Hide address" : "Show address"}</button>     
+      </div> : <div>No user selected.</div>}
       </div>
     )
   }   

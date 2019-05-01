@@ -15,7 +15,12 @@ class UserScreen extends Component {
   componentDidMount(){
     const {match} = this.props;
     const id = match.params.userName;
-    fetch('http://api.softhouse.rocks/users/'+ id)
+    let userUrl = 'http://api.softhouse.rocks/users/'+id;
+
+    if (id === undefined) 
+    userUrl = 'http://api.softhouse.rocks/users/';
+
+    fetch(userUrl)
     .then(res => res.json())
     .then(json => {
       this.setState({

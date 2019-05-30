@@ -7,7 +7,7 @@ class UserScreen extends Component {
   constructor(props) {
     super(props);
     this.state ={
-      user:[],
+      student:[],
     }
   }
 
@@ -15,16 +15,16 @@ class UserScreen extends Component {
   componentDidMount(){
     const {match} = this.props;
     const id = match.params.userName;
-    let userUrl = 'http://api.softhouse.rocks/users/'+id;
+    let userUrl = 'http://localhost:2000/students'+id;
 
     if (id === undefined) 
-    userUrl = 'http://api.softhouse.rocks/users/';
+    userUrl = 'http://localhost:2000/students/';
 
     fetch(userUrl)
     .then(res => res.json())
     .then(json => {
       this.setState({
-        user: json,
+        student: json,
         address: false,
       })
     });
@@ -44,15 +44,15 @@ class UserScreen extends Component {
       <div> {id ? 
       <div style={{ margin: "0 auto", textAlign: "center", backgroundColor: "white", padding: "15px", width: "30%" }}>
         <img style={{ height: "15em", width: "15em"}} src="https://static.nanopress.it/nanopress/fotogallery/1200X0/240691/contorno-di-batman.jpg" alt="batmanuser"/>
-        <h3>{this.state.user.username}</h3>
-        <h5>{this.state.user.name}</h5>
-        <h6>{this.state.user.email}</h6>
+        <h3>{this.state.student.username}</h3>
+        <h5>{this.state.student.name}</h5>
+        <h6>{this.state.student.email}</h6>
         { 
           this.state.address?
             <div>
-              <h6>{this.state.user.address.city}</h6>
-              <h6>{this.state.user.address.street}</h6>
-              <h6>{this.state.user.address.suite}</h6>
+              <h6>{this.state.student.address.city}</h6>
+              <h6>{this.state.student.address.street}</h6>
+              <h6>{this.state.student.address.zipcode}</h6>
             </div> :null
         }
         <button className="btn btn-info" onClick={this.toggleAddress}>{this.state.address ? "Hide address" : "Show address"}</button>     

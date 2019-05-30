@@ -21,7 +21,7 @@ class UserComponent extends Component {
               return (
                 <p className="usersList" key={index}><Link to={`/User/${userName.id}`}  style={{ color: color ? stateTrue : stateFalse}}>
                   {userName.name}
-                </Link></p>
+                </Link></p>              
               )
             })
             }

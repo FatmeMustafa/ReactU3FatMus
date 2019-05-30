@@ -8,14 +8,6 @@ the content string recieved as prop (info) from LoginScreen. The button also cha
 from state.*/
 class WrapperComponent extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      //content: true, 
-      showInfo: false, 
-    }
-  }  
-
   //throws a warning if showInfo is not boolean
   static propTypes = {
     showInfo: PropTypes.bool,
@@ -38,14 +30,7 @@ class WrapperComponent extends Component {
     return (
       <div className={styles.styleCards}>
        {this.props.children}  
-       {
-        this.state.showInfo === true ?
-        <div>{this.props.info}</div>:null 
-        }
         <p className={styles.styleLine}></p>
-        {this.props.info &&
-          <button className="btn btn-info" style={styleToggleBTN} onClick={this.toggleContent}>{this.state.showInfo ? "Hide info" : "Show info"}</button>
-        }
       </div>
     );
   }
